@@ -65,7 +65,53 @@ class HomePage extends StatelessWidget {
                 iconColor: Colors.grey[300],
               ),
             ),
-          )
+          ),
+          Builder(
+            builder: (contextI) {
+              final sizeI = MediaQuery.of(contextI).size;
+              return Container(
+                color: Colors.red,
+                width: size.width,
+                height: size.height / 3,
+                child: ListView(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Container(
+                        width: 200,
+                        color: Colors.yellow,
+                        child: Column(
+                          children: [
+                            Expanded(
+                              flex: 5,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                width: 200,
+                                child: Image.network(
+                                  "https://www.vounajanela.com/wp-content/uploads/2018/05/o-que-fazer-em-budapeste-1-1050x599.jpg",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const Expanded(
+                              child: ListTile(
+                                title: Text(
+                                  "Ola",
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                            )
+                          ],
+                        ))
+                  ],
+                ),
+              );
+            },
+          ),
         ],
       ),
     );
