@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'src/HomePage.dart';
 import 'package:flutter/services.dart';
+import 'src/DescPage.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -17,6 +18,11 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/home': (context) => HomePage(),
+        '/desc': (context) => DescPage(),
+      },
+      initialRoute: '/home',
       home: HomePage(),
     );
   }
