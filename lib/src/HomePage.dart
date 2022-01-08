@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:travel_app/src/DescPage.dart';
 import 'const.dart';
 
 class HomePage extends StatelessWidget {
@@ -174,55 +175,71 @@ class Hotels extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 10),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 1,
-            child: Container(
-              clipBehavior: Clip.hardEdge,
-              height: 130,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Image.network(
-                lImage,
-                fit: BoxFit.cover,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DescPage(
+                lImage: lImage,
+                lTitle: title,
+                lPrice: price,
+                lSubTitle: subTitle,
+                desc: loreImpsum,
               ),
             ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Column(
-              children: [
-                ListTile(
-                  title: Text(
-                    title,
-                    style: GoogleFonts.quicksand(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  subtitle: Text(
-                    subTitle,
-                    style: GoogleFonts.quicksand(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+          );
+        },
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Container(
+                clipBehavior: Clip.hardEdge,
+                height: 130,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                Container(
-                  width: 250,
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    "$price" + "/por Dia",
-                    style: GoogleFonts.quicksand(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+                child: Image.network(
+                  lImage,
+                  fit: BoxFit.cover,
                 ),
-              ],
+              ),
             ),
-          ),
-        ],
+            Expanded(
+              flex: 2,
+              child: Column(
+                children: [
+                  ListTile(
+                    title: Text(
+                      title,
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    subtitle: Text(
+                      subTitle,
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 250,
+                    padding: const EdgeInsets.only(left: 10),
+                    child: Text(
+                      "$price" + "/por Dia",
+                      style: GoogleFonts.quicksand(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -248,46 +265,62 @@ class PhotoCont extends StatelessWidget {
         margin: const EdgeInsets.only(right: 15),
         width: 200,
         //color: Colors.yellow,
-        child: Column(
-          children: [
-            Expanded(
-              flex: 5,
-              child: Container(
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: 200,
-                child: Image.network(
-                  localIm,
-                  fit: BoxFit.cover,
+        child: GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DescPage(
+                  lImage: localIm,
+                  lTitle: titulo,
+                  lSubTitle: subTitulo,
+                  lPrice: 280.90,
+                  desc: loreImpsum,
                 ),
               ),
-            ),
-            Expanded(
-              child: ListTile(
-                isThreeLine: true,
-                contentPadding: EdgeInsets.only(bottom: 10),
-                title: Text(
-                  titulo,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.quicksand(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+            );
+          },
+          child: Column(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                ),
-                subtitle: Text(
-                  subTitulo,
-                  style: GoogleFonts.quicksand(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                  width: 200,
+                  child: Image.network(
+                    localIm,
+                    fit: BoxFit.cover,
                   ),
-                  textAlign: TextAlign.center,
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: ListTile(
+                  isThreeLine: true,
+                  contentPadding: EdgeInsets.only(bottom: 10),
+                  title: Text(
+                    titulo,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.quicksand(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                  ),
+                  subtitle: Text(
+                    subTitulo,
+                    style: GoogleFonts.quicksand(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 15,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
